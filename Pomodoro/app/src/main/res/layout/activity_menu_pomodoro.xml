@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="la.hackspace.pomodoro.MenuPomodoro">
+
+    <TextView
+        android:layout_weight="0.13"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/Titulo"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/Verde"/> <!-- Título -->
+
+    <LinearLayout
+        android:layout_weight="0.05"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="0.15"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/Numero"/>
+
+        <Spinner
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spPomodoros"
+            android:textAlignment="center">
+
+        </Spinner>
+
+        <TextView
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/Minutos"/>
+
+        <Spinner
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spMinutos"
+            android:textAlignment="center">
+
+        </Spinner>
+
+
+    </LinearLayout> <!-- Opciones -->
+
+    <LinearLayout
+        android:layout_weight="0.55"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/pomodoroimagen"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_weight="0.32"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="0.36"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="0.35"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/ibComenzar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/botoncomenzar"
+                    android:onClick="ComenzarCronometro" />
+
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"
+                    android:id="@+id/pbDuracion"/>
+
+            </LinearLayout> <!-- Comenzar -->
+
+            <LinearLayout
+                android:layout_weight="0.35"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+
+
+            </LinearLayout>
+
+        </LinearLayout> <!-- Cronómetro -->
+
+        <LinearLayout
+            android:layout_weight="0.32"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="0.34"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="0.33"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/ibDetener"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.7"
+                    android:background="@drawable/detener"
+                    android:onClick="DetenerCronometro"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_weight="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"></LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="0.34"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout> <!-- Pomodoro -->
+
+    <TextView
+        android:layout_weight="0.12"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textColor="@color/Negro"
+        android:textStyle="bold"
+        android:id="@+id/tvEstado"/> <!-- Estado -->
+
+</LinearLayout>

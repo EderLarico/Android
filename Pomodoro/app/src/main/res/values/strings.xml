@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Pomodoro</string>
+    <string name="Titulo">Empieza tu tarea</string>
+    <string name="Iniciar">Iniciar</string>
+    <string name="Numero"><p>Número de pomodoros</p></string>
+    <string name="Minutos"><p>Cantidad de minutos</p></string>
+    <string name="Pomodoro">Pomodoro</string>
+</resources>
