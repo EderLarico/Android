@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="la.hackspace.multiscreen.MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Titulo"
+            android:gravity="center_horizontal"
+            android:textColor="@color/Negro"
+            android:textStyle="bold"
+            android:textSize="35sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Negro"
+                android:text="@string/IngresarNombre"/>
+
+            <EditText
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/HintNombre"
+                android:id="@+id/etNombre"/>
+
+        </LinearLayout> <!-- Nombres -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:textColor="@color/Negro"
+                android:text="@string/IngresarAP"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:hint="@string/HintAP"
+                android:layout_height="wrap_content"
+                android:id="@+id/etAP"/>
+
+        </LinearLayout> <!-- Apellido paterno -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:textColor="@color/Negro"
+                android:text="@string/IngresarAM"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:hint="@string/HintAM"
+                android:layout_height="wrap_content"
+                android:id="@+id/etAM"/>
+
+        </LinearLayout> <!-- Apellido materno -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:textColor="@color/Negro"
+                android:text="@string/IngresarEmail"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/HintEmail"
+                android:id="@+id/etEmail"/>
+
+        </LinearLayout> <!-- Email -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:textColor="@color/Negro"
+                        android:text="@string/IngresarDNI"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:hint="@string/HintDNI"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:id="@+id/etDNI"/>
+
+                </LinearLayout> <!-- DNI -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:textColor="@color/Negro"
+                        android:text="@string/IngresarTelefono"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:hint="@string/HintTelefono"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:id="@+id/etTelefono"/>
+
+                </LinearLayout> <!-- Teléfono -->
+
+                <Button
+                    android:id="@+id/buInsertarImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="IngresarImagen"
+                    android:text="@string/IngresarImagen" /> <!-- Boton imagen -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/Negro"
+                        android:text="@string/URL"/>
+
+                    <EditText
+                        android:layout_weight="0.5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="textUri"
+                        android:id="@+id/etURL"
+                        android:hint="@string/HintURL"/>
+
+
+                </LinearLayout> <!-- URL imagen -->
+
+                <Button
+                    android:id="@+id/buSiguiente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="SiguienteActividad"
+                    android:text="@string/ProcesarDatos" /> <!-- Boton siguiente actividad -->
+
+            </LinearLayout> <!-- DNI-Teléfono-Botones -->
+
+            <LinearLayout
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/HintImagen"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/Negro"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/iconosimple"
+                    android:contentDescription="@string/Imagen"
+                    android:id="@+id/ivImagen"/>
+
+            </LinearLayout> <!-- Imagen -->
+
+        </LinearLayout> <!-- DNI,Teléfono,Imagen -->
+
+    </LinearLayout>
+
+</ScrollView>
