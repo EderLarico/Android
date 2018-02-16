@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/ivIcono"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/Icono"
+        app:layout_constraintBottom_toTopOf="@+id/glLineaH1"
+        app:layout_constraintEnd_toStartOf="@+id/glLineaV1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/> <!-- Ícono -->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/tvNombre"
+        app:layout_constraintBottom_toTopOf="@+id/glLineaH1"
+        app:layout_constraintEnd_toStartOf="@+id/glLineaV2"
+        app:layout_constraintStart_toStartOf="@id/glLineaV1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/Indigo"
+        android:textSize="20sp"/> <!-- Nombre -->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="right"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/glLineaH1"
+        app:layout_constraintStart_toStartOf="@id/glLineaV3"
+        app:layout_constraintEnd_toEndOf="@id/glLineaV5"
+        android:text="@string/Precio"
+        android:textColor="@color/Negro"
+        android:textSize="20sp"
+        android:textStyle="italic"/> <!-- Precio Subtitulo-->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/tvPrecio"
+        android:gravity="left"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/glLineaH1"
+        app:layout_constraintStart_toStartOf="@id/glLineaV5"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        android:textStyle="normal"/> <!-- Precio -->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/VolumenDia"
+        android:gravity="right"
+        app:layout_constraintTop_toTopOf="@id/glLineaH1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glLineaV4"
+        android:textColor="@color/Negro" /> <!-- Precio Dia Subtitulo-->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/tvPrecioDia"
+        android:gravity="left"
+        app:layout_constraintTop_toTopOf="@id/glLineaH1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/glLineaV4"
+        app:layout_constraintEnd_toStartOf="@id/glLineaV3"
+        android:textColor="@color/VerdeOscuro"/> <!-- Precio Dia -->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/VolumenSemana"
+        android:gravity="right"
+        app:layout_constraintTop_toTopOf="@id/glLineaH1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/glLineaV3"
+        app:layout_constraintEnd_toEndOf="@id/glLineaV5"
+        android:textColor="@color/Negro"/> <!-- Precio Semana Subtitulo -->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/tvPrecioSemana"
+        android:gravity="left"
+        app:layout_constraintTop_toTopOf="@id/glLineaH1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/glLineaV5"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/VerdeOscuro"/> <!-- Precio Semana -->
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glLineaV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" /> <!-- 15% Vertical -->
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glLineaV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" /> <!-- 55% Vertical -->
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glLineaV3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" /> <!-- 50% Vertical -->
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glLineaV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" /> <!-- 25% Vertical -->
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glLineaV5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" /> <!-- 75% Vertical -->
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glLineaH1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" /> <!-- 45% Horizontal -->
+
+
+
+</android.support.constraint.ConstraintLayout>

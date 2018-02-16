@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Networking Adapter</string>
+    <string name="Icono">Icono de criptomoneda</string>
+    <string name="Titulo">Listado de criptodivisas</string>
+    <string name="Mostrar">Mostrar</string>
+    <string name="Crypto">Criptoconcurrencia</string>
+    <string name="Precio">Precio: $</string>
+    <string name="VolumenDia">Variación 24H:\u0020</string>
+    <string name="VolumenSemana">Variación 7D:\u0020</string>
+    <string name="NULL">Sin información</string>
+    <string name="Descargando">Cargando datos</string>
+    <string name="Actualizar">Actualizar</string>
+</resources>
