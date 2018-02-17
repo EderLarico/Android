@@ -1,104 +1,86 @@
 package la.hackspace.networkingadapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Eder on 14/02/2018.
  */
 
-public class cAdaptador extends ArrayAdapter{
-    List lista = new ArrayList();
-    Context context;
+public class cAdaptador extends RecyclerView.Adapter<cAdaptador.ViewHolder>{
+    private List<cMoneda> mDataset;
+    private Context context;
 
-    public cAdaptador(@NonNull Context context, int resource) {
-        super(context, resource);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView Nombre;
+        public TextView Precio;
+        public TextView PrecioDia;
+        public TextView PrecioSemana;
+        public ImageView Icono;
+        public ViewHolder(View v) {
+            super(v);
+            Nombre= v.findViewById(R.id.tvNombre);
+            Precio= v.findViewById(R.id.tvPrecio);
+            PrecioDia= v.findViewById(R.id.tvPrecioDia);
+            PrecioSemana= v.findViewById(R.id.tvPrecioSemana);
+            Icono= v.findViewById(R.id.ivIcono);
+        }
+    }
+
+    cAdaptador(List<cMoneda> Info,Context context) {
+        this.mDataset = Info;
         this.context = context;
     }
 
-    public void NuevaLista(){
-        lista.clear();
-    }
-
-    public void add(cMoneda object) {
-        super.add(object);
-        lista.add(object);
-    }
-
     @Override
-    public int getCount() {
-        return lista.size();
-    }
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        cMoneda Moneda= this.mDataset.get(position);
 
-    @Nullable
-    @Override
-    public Object getItem(int position) {
-        return lista.get(position);
-    }
-
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View row ;
-        row=convertView;
-        FilaTemporal CoinHolder;
-
-        if(row ==null){
-            LayoutInflater layoutInflater=(LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row=layoutInflater.inflate(R.layout.fila_crypto,parent,false);
-            CoinHolder=new FilaTemporal();
-
-            CoinHolder.Nombre= row.findViewById(R.id.tvNombre);
-            CoinHolder.Precio= row.findViewById(R.id.tvPrecio);
-            CoinHolder.PrecioDia= row.findViewById(R.id.tvPrecioDia);
-            CoinHolder.PrecioSemana= row.findViewById(R.id.tvPrecioSemana);
-            CoinHolder.Icono= row.findViewById(R.id.ivIcono);
-
-            row.setTag(CoinHolder);
-        }else{
-            CoinHolder=(FilaTemporal)row.getTag();
-        }
-
-        cMoneda Moneda=(cMoneda) this.getItem(position);
-
-        CoinHolder.Nombre.setText(Moneda.getNombre());
-        CoinHolder.Precio.setText(Moneda.getPrecio());
+        holder.Nombre.setText(Moneda.getNombre());
+        holder.Precio.setText(Moneda.getPrecio());
 
         if(Moneda.getInfoDia()){
-            CoinHolder.PrecioDia.setText(parent.getResources().getText(R.string.NULL));
+            holder.PrecioDia.setText(context.getResources().getText(R.string.NULL));
         }
         else {
-            if (Moneda.getRojoDia()) {CoinHolder.PrecioDia.setTextColor(parent.getResources().getColor(R.color.Rojo));}
-            else {CoinHolder.PrecioDia.setTextColor(parent.getResources().getColor(R.color.VerdeOscuro));}
-            CoinHolder.PrecioDia.setText(Moneda.getPrecioDia() + "%");
+            if (Moneda.getRojoDia()) {holder.PrecioDia.setTextColor(context.getResources().getColor(R.color.Rojo));}
+            else {holder.PrecioDia.setTextColor(context.getResources().getColor(R.color.VerdeOscuro));}
+            holder.PrecioDia.setText(Moneda.getPrecioDia() + "%");
         }
         if(Moneda.getInfoSemana()){
-            CoinHolder.PrecioSemana.setText(parent.getResources().getText(R.string.NULL));
+            holder.PrecioSemana.setText(context.getResources().getText(R.string.NULL));
         }
         else {
-            if (Moneda.getRojoSemana()) {CoinHolder.PrecioSemana.setTextColor(parent.getResources().getColor(R.color.Rojo));}
-            else {CoinHolder.PrecioSemana.setTextColor(parent.getResources().getColor(R.color.VerdeOscuro));}
-            CoinHolder.PrecioSemana.setText(Moneda.getPrecioSemana() + "%");
+            if (Moneda.getRojoSemana()) { holder.PrecioSemana.setTextColor(context.getResources().getColor(R.color.Rojo));}
+            else { holder.PrecioSemana.setTextColor(context.getResources().getColor(R.color.VerdeOscuro));}
+            holder.PrecioSemana.setText(Moneda.getPrecioSemana() + "%");
         }
-
         int id = context.getResources().getIdentifier("drawable/"+Moneda.getImagen(), null, context.getPackageName());
-        CoinHolder.Icono.setImageResource(id);
-
-        return row;
+        holder.Icono.setImageResource(id);
     }
 
-    static class FilaTemporal{
-        ImageView Icono;
-        TextView Nombre,Precio,PrecioDia,PrecioSemana;
+    @Override
+    public int getItemCount() {
+        return mDataset.size();
     }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int ViewType) {
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.fila_crypto, parent, false);
+
+        return new ViewHolder(view);
+    }
+
+    public void NuevaLista(){
+        mDataset.clear();
+    }
+
 }

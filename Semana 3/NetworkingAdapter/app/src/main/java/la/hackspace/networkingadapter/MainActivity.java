@@ -7,26 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.concurrent.ExecutionException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,16 +43,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             else{
-                try {
-                    Resultado = new BackgroundTask().execute().get();
-                    Intent intent = new Intent(getApplicationContext(), CriptoConcurrencia.class);
-                    intent.putExtra("json_arreglo", Resultado);
-                    startActivity(intent);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
+                new BackgroundTask().execute();
+                Intent intent = new Intent(getApplicationContext(), CriptoConcurrencia.class);
+                intent.putExtra("json_arreglo", Resultado);
+                startActivity(intent);
+
             }
         }
         else{
@@ -98,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            Toast.makeText(getApplicationContext(), "Espera un poco",Toast.LENGTH_SHORT).show();
+            Mostrar.setVisibility(View.GONE);
+            Cargar.setVisibility(View.VISIBLE);
+            Descargando.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
 
