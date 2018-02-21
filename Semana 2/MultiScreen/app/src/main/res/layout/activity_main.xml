@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="la.hackspace.multiscreen.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="la.hackspace.multiscreen.MainActivity">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -15,216 +15,198 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Titulo"
             android:gravity="center_horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:text="@string/Titulo"
             android:textColor="@color/Negro"
+            android:textSize="35sp"
             android:textStyle="bold"
-            android:textSize="35sp"/>
+            android:id="@+id/tvTituloIngreso"/> <!-- Título -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/tvTituloIngreso"
+            android:text="@string/IngresarNombre"
+            android:textColor="@color/Negro"
+            android:id="@+id/tvNombreP"/> <!-- Nombres -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Negro"
-                android:text="@string/IngresarNombre"/>
-
-            <EditText
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/HintNombre"
-                android:id="@+id/etNombre"/>
-
-        </LinearLayout> <!-- Nombres -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <EditText
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            app:layout_constraintStart_toStartOf="@id/glVerticalM"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTituloIngreso"
+            android:inputType="text"
+            android:hint="@string/HintNombre"
+            android:id="@+id/etNombre"/> <!-- Ingresar nombres -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:textColor="@color/Negro"
-                android:text="@string/IngresarAP"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:hint="@string/HintAP"
-                android:layout_height="wrap_content"
-                android:id="@+id/etAP"/>
-
-        </LinearLayout> <!-- Apellido paterno -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/etNombre"
+            android:text="@string/IngresarAP"
+            android:textColor="@color/Negro" /> <!-- Apellido paterno -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:textColor="@color/Negro"
-                android:text="@string/IngresarAM"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:hint="@string/HintAM"
-                android:layout_height="wrap_content"
-                android:id="@+id/etAM"/>
-
-        </LinearLayout> <!-- Apellido materno -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <EditText
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            app:layout_constraintStart_toStartOf="@id/glVerticalM"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etNombre"
+            android:inputType="text"
+            android:id="@+id/etAP"
+            android:hint="@string/HintAP" /> <!-- Ingresar apellido paterno -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:textColor="@color/Negro"
-                android:text="@string/IngresarEmail"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="@string/HintEmail"
-                android:id="@+id/etEmail"/>
-
-        </LinearLayout> <!-- Email -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" android:baselineAligned="false">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/etAP"
+            android:text="@string/IngresarAM"
+            android:textColor="@color/Negro" /> <!-- Apellido materno -->
 
-            <LinearLayout
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/glVerticalM"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etAP"
+            android:inputType="text"
+            android:id="@+id/etAM"
+            android:hint="@string/HintAM" /> <!-- Ingresar apellido materno -->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/etAM"
+            android:text="@string/IngresarEmail"
+            android:textColor="@color/Negro" /> <!-- Email -->
 
-                    <TextView
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:textColor="@color/Negro"
-                        android:text="@string/IngresarDNI"
-                        android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/glVerticalM"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etAM"
+            android:id="@+id/etEmail"
+            android:hint="@string/HintEmail"
+            android:inputType="textEmailAddress" /> <!-- Ingresar email -->
 
-                    <EditText
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:hint="@string/HintDNI"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:id="@+id/etDNI"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalC"
+            app:layout_constraintTop_toBottomOf="@id/etEmail"
+            android:text="@string/IngresarDNI"
+            android:textColor="@color/Negro" /> <!-- DNI -->
 
-                </LinearLayout> <!-- DNI -->
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/glVerticalC"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/etEmail"
+            android:id="@+id/etDNI"
+            android:hint="@string/HintDNI"
+            android:inputType="number" /> <!-- Ingresar DNI -->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalC"
+            app:layout_constraintTop_toBottomOf="@id/etDNI"
+            android:text="@string/IngresarTelefono"
+            android:textColor="@color/Negro" /> <!-- Teléfono -->
 
-                    <TextView
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:textColor="@color/Negro"
-                        android:text="@string/IngresarTelefono"
-                        android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/glVerticalC"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/etDNI"
+            android:id="@+id/etTelefono"
+            android:hint="@string/HintTelefono"
+            android:inputType="number" /> <!-- Ingresar teléfono -->
 
-                    <EditText
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:hint="@string/HintTelefono"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:id="@+id/etTelefono"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/etTelefono"
+            android:id="@+id/buInsertarImg"
+            android:onClick="IngresarImagen"
+            android:text="@string/IngresarImagen" /> <!-- Boton imagen -->
 
-                </LinearLayout> <!-- Teléfono -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/buInsertarImg"
+            android:text="@string/URL"
+            android:textColor="@color/Negro"
+            android:id="@+id/tvURL"/> <!-- URL de imagen -->
 
-                <Button
-                    android:id="@+id/buInsertarImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="IngresarImagen"
-                    android:text="@string/IngresarImagen" /> <!-- Boton imagen -->
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/tvURL"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:minLines="2"
+            android:maxLines="6"
+            android:scrollbars="vertical"
+            android:id="@+id/etURL"
+            android:hint="@string/HintURL"/> <!-- Ingresar URL de imagen -->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glVerticalM"
+            app:layout_constraintTop_toBottomOf="@id/etURL"
+            android:id="@+id/buSiguienteActividad"
+            android:onClick="SiguienteActividad"
+            android:text="@string/ProcesarDatos" /> <!-- Boton siguiente actividad -->
 
-                    <TextView
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/Negro"
-                        android:text="@string/URL"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/glVerticalM"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmail"
+            android:id="@+id/ivImagen"
+            android:contentDescription="@string/Imagen"
+            android:src="@drawable/iconosimple" /> <!-- Imagen -->
 
-                    <EditText
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="textUri"
-                        android:id="@+id/etURL"
-                        android:hint="@string/HintURL"/>
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            android:id="@+id/glVerticalM"/>
 
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25"
+            android:id="@+id/glVerticalC"/>
 
-                </LinearLayout> <!-- URL imagen -->
-
-                <Button
-                    android:id="@+id/buSiguiente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="SiguienteActividad"
-                    android:text="@string/ProcesarDatos" /> <!-- Boton siguiente actividad -->
-
-            </LinearLayout> <!-- DNI-Teléfono-Botones -->
-
-            <LinearLayout
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/HintImagen"
-                    android:gravity="center_horizontal"
-                    android:textColor="@color/Negro"/>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/iconosimple"
-                    android:contentDescription="@string/Imagen"
-                    android:id="@+id/ivImagen"/>
-
-            </LinearLayout> <!-- Imagen -->
-
-        </LinearLayout> <!-- DNI,Teléfono,Imagen -->
-
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

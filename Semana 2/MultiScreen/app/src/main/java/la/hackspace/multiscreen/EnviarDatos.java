@@ -8,27 +8,28 @@ import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 public class EnviarDatos extends AppCompatActivity {
 
+    //region Inicialización de variables
     TextView Nombres,AP,AM,Email,DNI,Telefono;
     ImageView Imagen;
+    //endregion Inicialización de variables
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enviar_datos);
 
+        //region Vinculación de datos
         Nombres = findViewById(R.id.tvNombre);
         AP = findViewById(R.id.tvAP);
         AM = findViewById(R.id.tvAM);
@@ -36,17 +37,19 @@ public class EnviarDatos extends AppCompatActivity {
         DNI = findViewById(R.id.tvDNI);
         Telefono = findViewById(R.id.tvTelefono);
         Imagen = findViewById(R.id.ivImagen);
+        //endregion Vinculación de datos
 
+        //region Obtención de datos
         Nombres.setText(getIntent().getExtras().getString("Nombres"));
         AP.setText(getIntent().getExtras().getString("AP"));
         AM.setText(getIntent().getExtras().getString("AM"));
         Email.setText(getIntent().getExtras().getString("Email"));
         DNI.setText(getIntent().getExtras().getString("DNI"));
         Telefono.setText(getIntent().getExtras().getString("Telefono"));
+        //endregion Obtención de datos
 
-
+        // Obtención de imagen
         if(getIntent().getExtras().getString("ImagenURI") != null){
-            Log.i("IMAGEN:::",getIntent().getExtras().getString("ImagenURI"));
             Imagen.setImageURI(Uri.parse(getIntent().getExtras().getString("ImagenURI")));
         }
         else{
@@ -54,14 +57,20 @@ public class EnviarDatos extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Crear mensaje con todos los datos
+     * @param view Vista(padre)
+     */
     public void Enviar(View view){
+
+        // Conversión de ImageView a .png
         Drawable d =Imagen.getDrawable();
         BitmapDrawable bitDw = ((BitmapDrawable) d);
         Bitmap bitmap = bitDw.getBitmap();
         File mFile = CrearImagen(bitmap,"Img");
 
-
-
+        //region Inicializar datos a enviar
         String Texto= "            " + "Envio de datos" +
                 "\n" + "Nombres: " + Nombres.getText().toString() +
                 "\n" + "Apellido paterno: " + AP.getText().toString() +
@@ -74,9 +83,10 @@ public class EnviarDatos extends AppCompatActivity {
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{Email.getText().toString()});
         i.putExtra(Intent.EXTRA_SUBJECT, "Datos de usuario");
         i.putExtra(Intent.EXTRA_TEXT   , Texto);
-
         i.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(mFile));
+        //endregion Inicializar datos a enviar
 
+        // Enviar datos
         try {
             startActivity(Intent.createChooser(i, "Send mail..."));
         } catch (android.content.ActivityNotFoundException ex) {
@@ -84,6 +94,12 @@ public class EnviarDatos extends AppCompatActivity {
         }
     }
 
+    /**
+     * Creación de imagen temporal
+     * @param bmp Mapa de bits original
+     * @param nombre Nombre de imagen
+     * @return
+     */
     private File CrearImagen(Bitmap bmp, String nombre) {
         String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
         OutputStream outStream = null;

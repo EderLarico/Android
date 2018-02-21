@@ -1,196 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context="la.hackspace.multiscreen.EnviarDatos"
     android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="@string/SegundoTitulo"
+        android:gravity="center_horizontal"
+        android:id="@+id/tvTitulo"
+        android:textColor="@color/Negro"
+        android:textStyle="bold"
+        android:textSize="35sp"/> <!-- Título -->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/SegundoTitulo"
-            android:gravity="center_horizontal"
-            android:textColor="@color/Negro"
-            android:textStyle="bold"
-            android:textSize="35sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        android:id="@+id/tvNombreS"
+        android:textColor="@color/Negro"
+        android:text="@string/HintNombre"/> <!-- Nombre -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/glVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        android:textColor="@color/Azul"
+        android:id="@+id/tvNombre"/> <!-- Mostrar nombre -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Negro"
-                android:text="@string/HintNombre"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreS"
+        android:textColor="@color/Negro"
+        android:id="@+id/tvAPS"
+        android:text="@string/HintAP" /> <!-- Apellido paterno -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Azul"
-                android:id="@+id/tvNombre"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/glVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNombre"
+        android:textColor="@color/Azul"
+        android:id="@+id/tvAP"/> <!-- Mostrar apellido paterno -->
 
-        </LinearLayout> <!-- Nombres -->
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvAPS"
+        android:textColor="@color/Negro"
+        android:text="@string/HintAM"
+        android:id="@+id/tvAMS"/> <!-- Apellido materno -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/glVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAP"
+        android:textColor="@color/Azul"
+        android:id="@+id/tvAM"/> <!-- Mostrar apellido materno -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:textColor="@color/Negro"
-                android:text="@string/HintAP"
-                android:layout_height="wrap_content" />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvAMS"
+        android:textColor="@color/Negro"
+        android:text="@string/HintEmail"
+        android:id="@+id/tvEmailS"/> <!-- Correo electrónico -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Azul"
-                android:id="@+id/tvAP"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/glVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAM"
+        android:textColor="@color/Azul"
+        android:id="@+id/tvEmail"/> <!-- Mostrar Correo electrónico -->
 
-        </LinearLayout> <!-- Apellido paterno -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvEmailS"
+        android:textColor="@color/Negro"
+        android:text="@string/HintDNI"
+        android:id="@+id/tvDNIS"/> <!-- DNI -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/glVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        android:textColor="@color/Azul"
+        android:id="@+id/tvDNI"/> <!-- Mostrar DNI -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:textColor="@color/Negro"
-                android:text="@string/HintAM"
-                android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvDNIS"
+        android:textColor="@color/Negro"
+        android:text="@string/HintTelefono"
+        android:id="@+id/tvTelefonoS"/> <!-- Teléfono -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Azul"
-                android:id="@+id/tvAM"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/glVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDNI"
+        android:textColor="@color/Azul"
+        android:id="@+id/tvTelefono"/> <!-- Mostrar Teléfono -->
 
-        </LinearLayout> <!-- Apellido materno -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/glVertical"
+        app:layout_constraintTop_toBottomOf="@id/tvTelefonoS"
+        android:layout_gravity="center_horizontal"
+        android:onClick="Enviar"
+        android:text="@string/Enviar"
+        android:id="@+id/buEnviar"/> <!-- Boton de envio -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/glVertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTelefono"
+        android:contentDescription="@string/Imagen"
+        android:id="@+id/ivImagen"/>  <!-- Imagen -->
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:textColor="@color/Negro"
-                android:text="@string/HintEmail"
-                android:layout_height="wrap_content" />
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        android:id="@+id/glVertical"/>
 
-            <TextView
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Azul"
-                android:id="@+id/tvEmail"/>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"
+        android:id="@+id/glVertical2"/>
 
-        </LinearLayout> <!-- Email -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" android:baselineAligned="false">
-
-            <LinearLayout
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:textColor="@color/Negro"
-                        android:text="@string/HintDNI"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/Azul"
-                        android:id="@+id/tvDNI"/>
-
-                </LinearLayout> <!-- DNI -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:textColor="@color/Negro"
-                        android:text="@string/HintTelefono"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_weight="0.5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/Azul"
-                        android:id="@+id/tvTelefono"/>
-
-                </LinearLayout> <!-- Teléfono -->
-
-                <Button
-                    android:id="@+id/buInsertarImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="Enviar"
-                    android:text="@string/Enviar" /> <!-- Boton imagen -->
-
-            </LinearLayout> <!-- DNI-Teléfono-Botones -->
-
-            <LinearLayout
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/HintImagen"
-                    android:gravity="center_horizontal"
-                    android:textColor="@color/Negro"/>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/Imagen"
-                    android:id="@+id/ivImagen"/>
-
-            </LinearLayout> <!-- Imagen -->
-
-        </LinearLayout> <!-- DNI,Teléfono,Imagen -->
-
-    </LinearLayout>
-
-</ScrollView>
+</android.support.constraint.ConstraintLayout>
