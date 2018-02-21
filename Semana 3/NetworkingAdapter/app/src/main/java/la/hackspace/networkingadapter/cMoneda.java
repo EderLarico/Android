@@ -5,6 +5,7 @@ package la.hackspace.networkingadapter;
  */
 
 public class cMoneda {
+    //region Inicialización de variables
     public String Imagen;
     public String Nombre;
     public String Precio;
@@ -14,13 +15,17 @@ public class cMoneda {
     public Boolean RojoSemana;
     public Boolean InfoDia;
     public Boolean InfoSemana;
+    //endregion Inicialización de variables
 
     public cMoneda(String Imagen, String Nombre, String Precio, String PrecioDia, String PrecioSemana){
+        //region Designación de variables
         this.Imagen = Imagen;
         this.Nombre = Nombre;
         this.Precio = Precio;
         this.PrecioDia = PrecioDia;
         this.PrecioSemana = PrecioSemana;
+
+        //Verificación de variación del día
         if(PrecioDia.equals("null")){
             this.InfoDia = true;
         }
@@ -29,6 +34,8 @@ public class cMoneda {
             else {this.RojoDia = false;}
             this.InfoDia = false;
         }
+
+        //Verificación de variación de la semana
         if(PrecioSemana.equals("null")){
             this.InfoSemana = true;
         }
@@ -37,78 +44,42 @@ public class cMoneda {
             else {this.RojoSemana = false;}
             this.InfoSemana = false;
         }
-
+        //endregion Designación de variables
     }
 
     public String getImagen() {
         return Imagen;
     }
 
-    public void setImagen(String imagen) {
-        Imagen = imagen;
-    }
-
     public String getNombre() {
         return Nombre;
-    }
-
-    public void setNombre(String nombre) {
-        Nombre = nombre;
     }
 
     public String getPrecio() {
         return Precio;
     }
 
-    public void setPrecio(String precio) {
-        Precio = precio;
-    }
-
     public String getPrecioDia() {
         return PrecioDia;
-    }
-
-    public void setPrecioSemana(String precioSemana) {
-        PrecioDia = precioSemana;
     }
 
     public String getPrecioSemana() {
         return PrecioSemana;
     }
 
-    public void setPrecioMes(String precioMes) {
-        PrecioSemana = precioMes;
-    }
-
     public Boolean getRojoDia() {
         return RojoDia;
-    }
-
-    public void setRojoDia(Boolean rojo) {
-        RojoDia = rojo;
     }
 
     public Boolean getRojoSemana() {
         return RojoSemana;
     }
 
-    public void setRojoSemana(Boolean rojo) {
-        RojoSemana = rojo;
-    }
-
     public Boolean getInfoDia() {
         return InfoDia;
     }
 
-    public void setInfoDia(Boolean infoDia) {
-        InfoDia = infoDia;
-    }
-
     public Boolean getInfoSemana() {
         return InfoSemana;
-    }
-
-    public void setInfoSemana(Boolean infoSemana) {
-        InfoSemana = infoSemana;
     }
 }
