@@ -5,4 +5,7 @@
     <string name="Numero"><p>Número de pomodoros</p></string>
     <string name="Minutos"><p>Cantidad de minutos</p></string>
     <string name="Pomodoro">Pomodoro</string>
+    <string name="ImagenPomodoro">Imagen referencial de pomodoro</string>
+    <string name="BotonComenzar">Boton de comenzar pomodoro</string>
+    <string name="BotonCancelar">Boton de cancelar pomodoro</string>
 </resources>

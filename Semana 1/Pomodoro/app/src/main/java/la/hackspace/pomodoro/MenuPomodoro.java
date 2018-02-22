@@ -1,22 +1,16 @@
 package la.hackspace.pomodoro;
 
 import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -24,27 +18,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
 public class MenuPomodoro extends AppCompatActivity {
 
+    //region Inicialización de variables de vista
     ImageButton Comenzar,Detener;
     ProgressBar Tiempo;
     Spinner Minutos, Cantidad;
     ArrayAdapter<Integer> aaMinutos, aaCantidad;
     TextView Estado;
+    //endregion Inicialización de variables de vista
+
+    //region Inicialización de variables internas
     int TiempoActual, NumeroActual, ContadorActual,AlarmaActual;
     long InicioChr;
     boolean BotonAct,Descanso,Detenido;
+    //endregion Inicialización de variables internas
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_pomodoro);
 
+        //region Vinculación y designación de variables
         Detenido= true;
         BotonAct = false;
         Comenzar = findViewById(R.id.ibComenzar);
@@ -54,16 +49,21 @@ public class MenuPomodoro extends AppCompatActivity {
         Estado = findViewById(R.id.tvEstado);
         Detener = findViewById(R.id.ibDetener);
         Descanso = false;
+        //endregion Vinculación y designación de variables
 
+        //Designación e ingreso de datos al adaptador de minutos
         Integer[] aMinutos = {20,25,30};
         aaMinutos = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,aMinutos);
         Minutos.setAdapter(aaMinutos);
 
+        //Designación e ingreso de datos al adaptador de cantidad
         Integer[] aCantidad = {1,2,3,4};
         aaCantidad = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,aCantidad);
         Cantidad.setAdapter(aaCantidad);
 
+        //region Recuperación de estado de componentes, datos y alarmas en cambio de vista
         if(savedInstanceState!= null){
+            //region Recuperación de estado de componentes
             TiempoActual = savedInstanceState.getInt("Minutos");
             NumeroActual = savedInstanceState.getInt("NumeroActual");
             BotonAct = savedInstanceState.getBoolean("Cronometrado");
@@ -73,7 +73,9 @@ public class MenuPomodoro extends AppCompatActivity {
             InicioChr = savedInstanceState.getLong("INICIAL");
             Descanso = savedInstanceState.getBoolean("Descanso");
             Detenido = savedInstanceState.getBoolean("DETENIDO");
+            //endregion Recuperación de estado de componentes
 
+            //region Actualización de alarma
             if(Descanso){
                 AlarmaActual = 3;
             }
@@ -83,15 +85,20 @@ public class MenuPomodoro extends AppCompatActivity {
             else{
                 AlarmaActual = 1;
             }
+            //endregion Actualización de alarma
+
+            //region Actualización de botones
             if (BotonAct){
                 Comenzar.setVisibility(View.GONE);
                 Tiempo.setVisibility(View.VISIBLE);
             }
+            //endregion Actualización de botones
 
+            //Verificar si la alarma esta detenida
             if(!Detenido){
                 Detener.setVisibility(View.VISIBLE);
 
-                //region Continuar 1
+                //region Continuar 1° pausa
                 if (ContadorActual == 1){
 
                     //region Pomodoro 2
@@ -349,9 +356,9 @@ public class MenuPomodoro extends AppCompatActivity {
                         FinalizarAlarma(savedInstanceState);
                     }
                 }
-                //endregion Continuar 1
+                //endregion Continuar 1° pausa
 
-                //region Continuar 2
+                //region Continuar 2° pausa
                 else if (ContadorActual == 2){
                     //region Pomodoro 2
                     if(NumeroActual >2){
@@ -518,9 +525,9 @@ public class MenuPomodoro extends AppCompatActivity {
                         FinalizarAlarma(savedInstanceState);
                     }
                 }
-                //endregion Continuar 2
+                //endregion Continuar 2° pausa
 
-                //region Continuar 3
+                //region Continuar 3° pausa
                 else if (ContadorActual == 3){
                     //region Pomodoro 2
                     if(NumeroActual >3){
@@ -598,9 +605,9 @@ public class MenuPomodoro extends AppCompatActivity {
                         FinalizarAlarma(savedInstanceState);
                     }
                 }
-                //endregion Continuar3
+                //endregion Continuar3° pausa
 
-                //region Continuar 4
+                //region Continuar 4° pausa
                 else if (ContadorActual == 4){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -614,16 +621,18 @@ public class MenuPomodoro extends AppCompatActivity {
                         }
                     }, TiempoActual*60000 - savedInstanceState.getLong("ContinuarChr"));
                 }
-                //endregion Continuar 4
+                //endregion Continuar 4° pausa
             }
 
         }
-        else {
-        }
-
+        //endregion Recuperación de estado de componentes, datos y alarmas en cambio de vista
 
     }
 
+    /**
+     * Último cronómetro de alarma
+     * @param bundle Vista actual
+     */
     public void FinalizarAlarma(Bundle bundle){
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -637,62 +646,88 @@ public class MenuPomodoro extends AppCompatActivity {
         }, TiempoActual*60000 - bundle.getLong("ContinuarChr"));
     }
 
+    /**
+     * Detener todas las alarmas
+     * @param view Vista actual
+     */
     public void DetenerCronometro(View view){
+
+        //region Actualizar componentes actuales
         Estado.setText("");
         Tiempo.setVisibility(View.GONE);
         Comenzar.setVisibility(View.VISIBLE);
         BotonAct = false;
+        //endregion Actualizar componentes actuales
 
+        //region Detención de alarmas
+
+        //Detener Alarma genérica
         PackageManager pm  = MenuPomodoro.this.getPackageManager();
         ComponentName componentName = new ComponentName(MenuPomodoro.this, Alarma.class);
         pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                 PackageManager.DONT_KILL_APP);
 
+        //Detener Alarma final
         pm  = MenuPomodoro.this.getPackageManager();
         componentName = new ComponentName(MenuPomodoro.this, AlarmaFinal.class);
         pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                 PackageManager.DONT_KILL_APP);
 
+        //Detener Alarma de descanso
         pm  = MenuPomodoro.this.getPackageManager();
         componentName = new ComponentName(MenuPomodoro.this, Empezar.class);
         pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                 PackageManager.DONT_KILL_APP);
+        //endregion Detención de alarmas
 
+        //region Actualización de botones
         Detener.setVisibility(View.GONE);
         Detenido = true;
         Toast.makeText(this, "Pomodoro cancelado", Toast.LENGTH_SHORT).show();
+        //endregion Actualización de botones
     }
 
+    /**
+     * Iniciar alarma
+     * @param view Vista actual
+     */
     public void ComenzarCronometro(View view){
+
+        //region Detener alarmas actuales
         PackageManager pm  = MenuPomodoro.this.getPackageManager();
+
+        //Detener Alarma genérica
         ComponentName componentName = new ComponentName(MenuPomodoro.this, Alarma.class);
         pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                 PackageManager.DONT_KILL_APP);
 
+        //Detener Alarma final
         pm  = MenuPomodoro.this.getPackageManager();
         componentName = new ComponentName(MenuPomodoro.this, AlarmaFinal.class);
         pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                 PackageManager.DONT_KILL_APP);
 
+        //Detener Alarma de descanso
         pm  = MenuPomodoro.this.getPackageManager();
         componentName = new ComponentName(MenuPomodoro.this, Empezar.class);
         pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                 PackageManager.DONT_KILL_APP);
+        //endregion Detener alarmas actuales
 
-
+        //region Actualización de componentes y datos de vista
         BotonAct = true;
         NumeroActual = Integer.valueOf(Cantidad.getSelectedItem().toString());
         TiempoActual = Integer.valueOf(Minutos.getSelectedItem().toString());
         Comenzar.setVisibility(View.GONE);
         Tiempo.setVisibility(View.VISIBLE);
         Detener.setVisibility(View.VISIBLE);
-
         Estado.setText("Pomodoro N° : 1 - " + TiempoActual + " minutos");
         AlarmaActual = 1;
         ContadorActual = 1;
         InicioChr = SystemClock.elapsedRealtime();
         Alarma(TiempoActual);
         Detenido=false;
+        //endregion Actualización de componentes y datos de vista
 
         //region Pomodoro 2
         if(NumeroActual >1){
@@ -704,7 +739,7 @@ public class MenuPomodoro extends AppCompatActivity {
                         AlarmaActual = 3;
                         Estado.setText("A descansar - 5 minutos");
                         InicioChr = SystemClock.elapsedRealtime();
-                        Empezar(5);
+                        EmpezarDescanso(5);
                         Descanso = true;
 
                         Handler handler = new Handler();
@@ -729,7 +764,7 @@ public class MenuPomodoro extends AppCompatActivity {
                                                     AlarmaActual = 3;
                                                     Estado.setText("A descansar - 5 minutos");
                                                     InicioChr = SystemClock.elapsedRealtime();
-                                                    Empezar(5);
+                                                    EmpezarDescanso(5);
                                                     Descanso = true;
 
                                                     Handler handler = new Handler();
@@ -754,7 +789,7 @@ public class MenuPomodoro extends AppCompatActivity {
                                                                                 AlarmaActual = 3;
                                                                                 Estado.setText("A descansar - 5 minutos");
                                                                                 InicioChr = SystemClock.elapsedRealtime();
-                                                                                Empezar(5);
+                                                                                EmpezarDescanso(5);
                                                                                 Descanso = true;
 
                                                                                 Handler handler = new Handler();
@@ -838,10 +873,9 @@ public class MenuPomodoro extends AppCompatActivity {
         }
         //endregion Pomodoro 2
 
-        //region Final
+        //region Pomodoro 1
         else{
             final Handler handler2 = new Handler();
-
             final Runnable r = new Runnable() {
                 public void run() {
                     Estado.setText("A descansar - 5 minutos");
@@ -853,11 +887,17 @@ public class MenuPomodoro extends AppCompatActivity {
             };
             handler2.postDelayed(r, TiempoActual*60000);
         }
-        //endregion Final
+        //endregion Pomodoro 1
     }
 
+    /**
+     * Guardar datos y estado de componentes
+     * @param outState Estado actual de la actividad
+     */
     @Override
     public void onSaveInstanceState(Bundle outState) {
+
+        //region Guardado de datos y estados de los componentes
         outState.putInt("NumeroActual", NumeroActual);
         outState.putInt("Minutos", TiempoActual);
         outState.putBoolean("Cronometrado",BotonAct);
@@ -866,54 +906,66 @@ public class MenuPomodoro extends AppCompatActivity {
         outState.putLong("INICIAL",InicioChr);
         outState.putLong("ContinuarChr",SystemClock.elapsedRealtime() - InicioChr);
         outState.putBoolean("DETENIDO",Detenido);
-
         outState.putBoolean("Descanso",Descanso);
+        //endregion Guardado de datos y estados de los componentes
+
         super.onSaveInstanceState(outState);
     }
 
+    /**
+     * Inicia la alarma genérica
+     * @param minutos Número de minutos de descanso
+     */
     public void Alarma(int minutos){
+        //Inicialización y designación de alarma
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+        //Inicialización y designación de nuevo intent
         Intent myIntent = new Intent(this, Alarma.class);
+
+        //Inicialización y designación de nuevo pendingintent
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MenuPomodoro.this, 1, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        //Encendido de alarma
         manager.set( AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 60000*minutos, pendingIntent);
 
     }
+
+    /**
+     * Inicia la alarma para el último pomodoro
+     * @param minutos Número de minutos de descanso
+     */
     public void AlarmaFinal(int minutos){
+        //Inicialización y designación de alarma
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+        //Inicialización y designación de nuevo intent
         Intent myIntent = new Intent(MenuPomodoro.this, AlarmaFinal.class);
+
+        //Inicialización y designación de nuevo pendingintent
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MenuPomodoro.this, 1, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        //Encendido de alarma
         manager.set( AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 60000*minutos, pendingIntent);
 
     }
-    public void Empezar(int minutos){
+
+    /**
+     * Inicia la alarma para descansar 5 minutos
+     * @param minutos Número de minutos de descanso
+     */
+    public void EmpezarDescanso(int minutos){
+        //Inicialización y designación de alarma
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+        //Inicialización y designación de nuevo intent
         Intent myIntent = new Intent(this, Empezar.class);
+
+        //Inicialización y designación de nuevo pendingintent
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MenuPomodoro.this, 1, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        //Encendido de alarma
         manager.set( AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 60000*minutos, pendingIntent);
     }
 
-    @Override
-    protected void onDestroy() {
-        PackageManager pm  = MenuPomodoro.this.getPackageManager();
-        ComponentName componentName = new ComponentName(MenuPomodoro.this, Alarma.class);
-        pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP);
-
-        pm  = MenuPomodoro.this.getPackageManager();
-        componentName = new ComponentName(MenuPomodoro.this, AlarmaFinal.class);
-        pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP);
-
-        pm  = MenuPomodoro.this.getPackageManager();
-        componentName = new ComponentName(MenuPomodoro.this, Empezar.class);
-        pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP);
-        super.onDestroy();
-    }
 }

@@ -17,11 +17,19 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  */
 
 public class Empezar extends BroadcastReceiver {
+
+    /**
+     * Creación de alarma de descanso
+     * @param context Contexto actual
+     * @param intent Intent contenedor de alarma
+     */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onReceive(Context context, Intent intent) {
+        //Mensaje de alarma
         Toast.makeText(context, "¡De vuelta al trabajo!", Toast.LENGTH_SHORT).show();
 
+        //region Creación de alarma
         Intent intent2 = new Intent();
         PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent2, 0);
         Notification noti = new Notification.Builder(context)
@@ -38,5 +46,6 @@ public class Empezar extends BroadcastReceiver {
         noti.flags=Notification.FLAG_AUTO_CANCEL;
         NotificationManager notificationManager2 = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         notificationManager2.notify(1, noti);
+        //endregion Creación de alarma
     }
 }

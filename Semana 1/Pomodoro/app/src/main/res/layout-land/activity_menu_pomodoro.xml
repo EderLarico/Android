@@ -1,188 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:layout_weight="0.13"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/glTitulo"
         android:text="@string/Titulo"
         android:textStyle="bold"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:gravity="center_horizontal"
         android:textColor="@color/Verde"/> <!-- Título -->
 
-    <LinearLayout
-        android:layout_weight="0.05"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"></LinearLayout>
-
-    <LinearLayout
-        android:layout_weight="0.15"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="@id/glEspacio"
+        app:layout_constraintBottom_toTopOf="@id/glOpciones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gl25"
+        android:text="@string/Numero"/> <!-- Subtítulo número -->
 
-        <TextView
-            android:layout_weight="0.25"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/Numero"/>
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/glEspacio"
+        app:layout_constraintBottom_toTopOf="@id/glOpciones"
+        app:layout_constraintStart_toStartOf="@id/gl25"
+        app:layout_constraintEnd_toStartOf="@id/gl50"
+        android:gravity="center_horizontal"
+        android:id="@+id/spPomodoros"
+        android:textAlignment="center"> <!-- Número de pomodoros -->
 
-        <Spinner
-            android:layout_weight="0.25"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/spPomodoros"
-            android:textAlignment="center">
+    </Spinner> <!-- Número de pomodoros -->
 
-        </Spinner>
-
-        <TextView
-            android:layout_weight="0.25"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/Minutos"/>
-
-        <Spinner
-            android:layout_weight="0.25"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/spMinutos"
-            android:textAlignment="center">
-
-        </Spinner>
-
-
-    </LinearLayout> <!-- Opciones -->
-
-    <LinearLayout
-        android:layout_weight="0.55"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="@id/glEspacio"
+        app:layout_constraintBottom_toTopOf="@id/glOpciones"
+        app:layout_constraintStart_toStartOf="@id/gl50"
+        app:layout_constraintEnd_toStartOf="@id/gl75"
+        android:text="@string/Minutos"/> <!-- Subtítulo minutos -->
 
-        <LinearLayout
-            android:layout_weight="0.5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/glEspacio"
+        app:layout_constraintBottom_toTopOf="@id/glOpciones"
+        app:layout_constraintStart_toStartOf="@id/gl75"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/spMinutos"
+        android:textAlignment="center"> <!-- Minutos -->
 
-            <TextView
-                android:layout_weight="0.12"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/Negro"
-                android:singleLine="false"
-                android:textStyle="bold"
-                android:id="@+id/tvEstado"/>
+    </Spinner> <!-- Minutos por pomodoro -->
 
-        </LinearLayout> <!-- Estado -->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gl50"
+        app:layout_constraintTop_toBottomOf="@id/glOpciones"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/Negro"
+        android:singleLine="false"
+        android:textStyle="bold"
+        android:id="@+id/tvEstado"/> <!-- Estado -->
 
-        <LinearLayout
-            android:layout_weight="0.5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/pomodoroimagen">
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/pomodoroimagen"
+        app:layout_constraintStart_toEndOf="@id/gl50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/glOpciones"
+        android:contentDescription="@string/ImagenPomodoro"
+        app:layout_constraintBottom_toBottomOf="parent"/> <!-- Imagen Pomodoro -->
 
-            <LinearLayout
-                android:layout_weight="0.32"
-                android:layout_width="match_parent"
-                android:layout_height="0dp">
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/gl67"
+        app:layout_constraintEnd_toStartOf="@id/gl83"
+        app:layout_constraintTop_toBottomOf="@id/gl59H"
+        app:layout_constraintBottom_toTopOf="@id/gl78H"
+        android:contentDescription="@string/BotonComenzar"
+        android:background="@drawable/botoncomenzar"
+        android:onClick="ComenzarCronometro"
+        android:id="@+id/ibComenzar"/> <!-- Boton comenzar -->
 
-            </LinearLayout>
+    <ProgressBar
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/gl67"
+        app:layout_constraintEnd_toStartOf="@id/gl83"
+        app:layout_constraintTop_toBottomOf="@id/gl56H"
+        app:layout_constraintBottom_toTopOf="@id/gl72H"
+        android:visibility="invisible"
+        android:id="@+id/pbDuracion"/> <!-- Barra de progreso -->
 
-            <LinearLayout
-                android:layout_weight="0.36"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal">
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/gl67"
+        app:layout_constraintEnd_toStartOf="@id/gl83"
+        app:layout_constraintTop_toBottomOf="@id/gl72H"
+        app:layout_constraintBottom_toTopOf="@id/gl87H"
+        android:contentDescription="@string/BotonCancelar"
+        android:background="@drawable/detener"
+        android:onClick="DetenerCronometro"
+        android:visibility="gone"
+        android:id="@+id/ibDetener"/> <!-- Boton cancelar -->
 
-                <LinearLayout
-                    android:layout_weight="0.35"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"></LinearLayout>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13"
+        android:id="@+id/glTitulo"/> <!-- Titulo -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17"
+        android:id="@+id/glEspacio"/> <!-- Espacio -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.32"
+        android:id="@+id/glOpciones"/> <!-- Opciones -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.56"
+        android:id="@+id/gl56H"/> <!-- Horizontal 56% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59"
+        android:id="@+id/gl59H"/> <!-- Horizontal 59% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72"
+        android:id="@+id/gl72H"/> <!-- Horizontal 72% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.78"
+        android:id="@+id/gl78H"/> <!-- Horizontal 78% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.87"
+        android:id="@+id/gl87H"/> <!-- Horizontal 87% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"
+        android:id="@+id/gl25"/> <!-- Vertical 25% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50"
+        android:id="@+id/gl50"/> <!-- Vertical 50% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
+        android:id="@+id/gl75"/> <!-- Vertical 75% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67"
+        android:id="@+id/gl67"/> <!-- Vertical 67% -->
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.83"
+        android:id="@+id/gl83"/> <!-- Vertical 83% -->
 
-                <LinearLayout
-                    android:layout_weight="0.3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/ibComenzar"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/botoncomenzar"
-                        android:onClick="ComenzarCronometro" />
-
-                    <ProgressBar
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="invisible"
-                        android:id="@+id/pbDuracion"/>
-
-                </LinearLayout> <!-- Comenzar -->
-
-                <LinearLayout
-                    android:layout_weight="0.35"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"></LinearLayout>
-
-            </LinearLayout> <!-- Cronómetro -->
-
-            <LinearLayout
-                android:layout_weight="0.32"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_weight="0.34"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_weight="0.33"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/ibDetener"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.7"
-                        android:background="@drawable/detener"
-                        android:onClick="DetenerCronometro"
-                        android:visibility="gone" />
-
-                    <LinearLayout
-                        android:layout_weight="0.3"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"></LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_weight="0.34"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent">
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-        </LinearLayout> <!-- Comenzar -->
-
-    </LinearLayout> <!-- Pomodoro -->
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
